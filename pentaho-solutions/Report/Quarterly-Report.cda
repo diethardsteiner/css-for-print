@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="qry_characteristics" type="scripting.scripting">
+         <Initscript></Initscript>
+         <Language>beanshell</Language>
+      </Connection>
+      <Connection id="qry_comments" type="scripting.scripting">
+         <Initscript></Initscript>
+         <Language>beanshell</Language>
+      </Connection>
+      <Connection id="qry_consumption" type="scripting.scripting">
+         <Initscript></Initscript>
+         <Language>beanshell</Language>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" cache="true" cacheDuration="3600"
+               connection="qry_characteristics"
+               id="qry_characteristics"
+               type="scriptable">
+      <Columns/>
+      <Parameters/>
+      <Query>import org.pentaho.reporting.engine.classic.core.util.TypedTableModel;
+
+String[] columnNames = new String[2];
+columnNames[0] = "Key";
+columnNames[1] = "Value";
+
+Class[] columnTypes = new Class[2];
+columnTypes[0] = String.class;
+columnTypes[1] = String.class;
+
+TypedTableModel model = new TypedTableModel(columnNames, columnTypes);
+model.addRow(new Object[]{ new String("Manager"), new String("Tim Ludlow")});
+model.addRow(new Object[]{ new String("Tel"), new String("02034221342")});
+model.addRow(new Object[]{ new String("email"), new String("tim@ludlow.london")});
+
+return model;</Query>
+   </DataAccess>
+   <DataAccess access="public" cache="true" cacheDuration="3600" connection="qry_comments"
+               id="qry_comments"
+               type="scriptable">
+      <Columns/>
+      <Parameters/>
+      <Query>import org.pentaho.reporting.engine.classic.core.util.TypedTableModel;
+
+String[] columnNames = new String[2];
+columnNames[0] = "Date";
+columnNames[1] = "Comment";
+
+Class[] columnTypes = new Class[2];
+columnTypes[0] = String.class;
+columnTypes[1] = String.class;
+
+TypedTableModel model = new TypedTableModel(columnNames, columnTypes);
+model.addRow(new Object[]{ new String("2015-01-02"), new String("Website down for 2h")});
+model.addRow(new Object[]{ new String("2015-01-09"), new String("Shop closed due to water leakage")});
+model.addRow(new Object[]{ new String("2015-01-22"), new String("eMail campaign sent out")});
+model.addRow(new Object[]{ new String("2015-02-03"), new String("Trade show in Birmingham")});
+
+return model;</Query>
+   </DataAccess>
+   <DataAccess access="public" cache="true" cacheDuration="3600" connection="qry_consumption"
+               id="qry_consumption"
+               type="scriptable">
+      <Columns/>
+      <Parameters/>
+      <Query>import org.pentaho.reporting.engine.classic.core.util.TypedTableModel;
+
+String[] columnNames = new String[2];
+columnNames[0] = "Year-Quarter";
+columnNames[1] = "Consumption";
+
+Class[] columnTypes = new Class[2];
+columnTypes[0] = String.class;
+columnTypes[1] = Integer.class;
+
+TypedTableModel model = new TypedTableModel(columnNames, columnTypes);
+model.addRow(new Object[]{ new String("2006 Q1"), new Integer(3210)});
+model.addRow(new Object[]{ new String("2006 Q2"), new Integer(4314)});
+model.addRow(new Object[]{ new String("2006 Q3"), new Integer(2110)});
+model.addRow(new Object[]{ new String("2006 Q4"), new Integer(5410)});
+
+model.addRow(new Object[]{ new String("2007 Q1"), new Integer(4210)});
+model.addRow(new Object[]{ new String("2007 Q2"), new Integer(2314)});
+model.addRow(new Object[]{ new String("2007 Q3"), new Integer(3110)});
+model.addRow(new Object[]{ new String("2007 Q4"), new Integer(5410)});
+
+model.addRow(new Object[]{ new String("2008 Q1"), new Integer(3210)});
+model.addRow(new Object[]{ new String("2008 Q2"), new Integer(4314)});
+model.addRow(new Object[]{ new String("2008 Q3"), new Integer(5110)});
+model.addRow(new Object[]{ new String("2008 Q4"), new Integer(2410)});
+
+model.addRow(new Object[]{ new String("2009 Q1"), new Integer(3210)});
+model.addRow(new Object[]{ new String("2009 Q2"), new Integer(5314)});
+model.addRow(new Object[]{ new String("2009 Q3"), new Integer(2110)});
+model.addRow(new Object[]{ new String("2009 Q4"), new Integer(3410)});
+
+model.addRow(new Object[]{ new String("2010 Q1"), new Integer(5210)});
+model.addRow(new Object[]{ new String("2010 Q2"), new Integer(2314)});
+model.addRow(new Object[]{ new String("2010 Q3"), new Integer(1110)});
+model.addRow(new Object[]{ new String("2010 Q4"), new Integer(2410)});
+
+model.addRow(new Object[]{ new String("2011 Q1"), new Integer(4210)});
+model.addRow(new Object[]{ new String("2011 Q2"), new Integer(2314)});
+model.addRow(new Object[]{ new String("2011 Q3"), new Integer(5110)});
+model.addRow(new Object[]{ new String("2011 Q4"), new Integer(2410)});
+
+model.addRow(new Object[]{ new String("2012 Q1"), new Integer(3210)});
+model.addRow(new Object[]{ new String("2012 Q2"), new Integer(4314)});
+model.addRow(new Object[]{ new String("2012 Q3"), new Integer(5110)});
+model.addRow(new Object[]{ new String("2012 Q4"), new Integer(2410)});
+
+model.addRow(new Object[]{ new String("2013 Q1"), new Integer(5210)});
+model.addRow(new Object[]{ new String("2013 Q2"), new Integer(2314)});
+model.addRow(new Object[]{ new String("2013 Q3"), new Integer(3110)});
+model.addRow(new Object[]{ new String("2013 Q4"), new Integer(5410)});
+
+model.addRow(new Object[]{ new String("2014 Q1"), new Integer(5210)});
+model.addRow(new Object[]{ new String("2014 Q2"), new Integer(2314)});
+model.addRow(new Object[]{ new String("2014 Q3"), new Integer(3110)});
+model.addRow(new Object[]{ new String("2014 Q4"), new Integer(1410)});
+
+
+
+return model;</Query>
+   </DataAccess>
+</CDADescriptor>

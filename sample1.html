@@ -1,0 +1,95 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	
+	<link href="sample1.css" rel="stylesheet" type="text/css">
+	<!-- load the d3.js library -->    
+	<!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+	<script src="d3/d3.min.js"></script>
+	<script src="report.core.js"></script>
+	<script src="sample1.js"></script>
+
+	<!--- CCC DEPENDENCIES: START -->
+        <!-- Java Script Resources -->
+        <!--
+        <script src="https://code.jquery.com/jquery-2.1.1.js" type="text/javascript"></script>
+        <script src="http://www.webdetails.pt/ctools/charts/lib/jquery.tipsy.js" type="text/javascript"></script>
+        <script src="http://www.webdetails.pt/ctools/charts/lib/protovis.js" type="text/javascript"></script>
+        <script src="http://www.webdetails.pt/ctools/charts/lib/protovis-msie.js" type="text/javascript"></script>
+        <script src="http://www.webdetails.pt/ctools/charts/lib/tipsy.js" type="text/javascript"></script>
+        <script src="http://www.webdetails.pt/ctools/charts/lib/def.js" type="text/javascript"></script>
+        <script src="http://www.webdetails.pt/ctools/charts/lib/pvc-r2.0.js" type="text/javascript"></script>
+      -->
+        
+        <!-- sprintf-js: sourced from dist folder in https://github.com/alexei/sprintf.js -->
+        <!--
+        <script src="https://github.com/alexei/sprintf.js/raw/master/dist/sprintf.min.js" type="text/javascript"></script>
+        <!-- Sample Data -->
+        <!--
+        <script src="http://www.webdetails.pt/ctools/charts/lib/q01-01.js" type="text/javascript"></script>
+        <script src="http://www.webdetails.pt/ctools/charts/lib/bp.js" type="text/javascript"></script>
+      -->
+        <!-- Stylesheet -->
+        <!--
+        <link rel="stylesheet" href="http://www.webdetails.pt/ctools/charts/lib/tipsy.css" type="text/css" />
+			-->
+	<!-- CCC DEPENDENCIES: END -->
+	
+	
+</head>
+
+<body>
+	<div id='page'>
+		<div id='navigation'>
+			<div class='nav-item'>
+				Navigation goes here ... 
+			</div>
+		</div>
+		<div class="section-title">Monthly Report</div>
+		
+		<div class="box-full-width">
+			
+			<div class="box-half-width">
+				<div class="box-container-title">
+					<div class="container-title">
+						Comments
+					</div>
+				</div>
+				<div id="table-comments"></div>
+			</div>
+			
+			<div class="box-half-width">
+				<div class="box-container-title">
+					<div class="container-title">
+						Characteristics
+					</div>
+				</div>
+				<div id="table-characteristics"></div>
+			</div>
+		
+		</div>
+		
+		<div class="box-full-width">
+			<div class="box-container-title">
+				<div class="container-title">
+					Consumption
+				</div>
+			</div>
+			<img src="http://localhost:8080/pentaho/plugin/cgg/api/services/draw?script=/public/Dashboards/Report/Quarterly-Report_comp_chart_consumption.js&outputType=svg&userid=admin&password=password">	<!-- authentication details must be only used for local development work -->
+		</div>
+		
+		<!-- forced page break -->
+		<div class="page-break"></div>
+		
+		<div class="section-title">Quarterly Report</div>
+		
+<!-- 		<div class="flex-container">
+			<div class="flex-item">Characteristics</div>
+			<div class="flex-item">Comments</div>
+		</div> -->
+		
+	</div>
+
+</body>
+</html>

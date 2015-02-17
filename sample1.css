@@ -1,0 +1,528 @@
+
+@page {
+
+  size: A4 portrait;
+  /* size: 510mm 297mm portrait; */
+  /* http://www.papersizes.org/a-paper-sizes.htm */
+  /* A4: 210mm x 297mm */
+  /* define the space for the maring boxes (@top-*, @right-*, etc) */
+  margin: 1.5cm 1.5cm 1.5cm 1.5cm; 
+	
+/* http://alistapart.com/article/building-books-with-css3
+All but the corner margin boxes have variable widths (for boxes on the horizontal edges) or heights (for boxes along the vertical edges), and will stretch the full width or height available until they run into an obstacle (for example, neighboring content defined in one of the adjacent margin boxes)
+*/
+
+	@top-left-corner {
+		/* not necessary to specify width and height for corners as based on page margin */
+		/* see http://dev.w3.org/csswg/css-page-3/header-ex-6.png */
+		/* width: 1.5cm; */ 
+		content: ""; /* has to be specified! */
+		background-color: rgba(42, 201, 80, 0.220);
+		border-bottom: solid green; 
+	}
+
+	@top-left {
+		/* width: 5.3cm; */
+		width: 70%;
+		content: "";
+		/* 
+		using multiple backgrounds: https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_multiple_backgrounds 
+		tool for building gradients: http://www.colorzilla.com/gradient-editor/		
+ 		background-image: url('images/logo_v4.png');
+		background-color: rgba(42, 201, 80, 0.220); 
+		*/
+		background: url('images/logo_v4.png'), rgba(42, 201, 80, 0.220);
+		background-repeat: no-repeat, repeat;
+		background-position: left center, left;
+		background-size: contain; /* 5cm, cover or 100%: scale bg image, retains img ratio */ 
+		border-bottom: solid green;
+	} 
+	
+/* 	@top-center {
+			width: 20%;
+			content: "";
+			vertical-align: middle; 
+			background-color: rgba(42, 201, 80, 0.220);	
+			border-bottom: solid green;
+	} */
+	
+	@top-right {
+		/* width: 4.5cm; */
+		width: 30%;
+		content: "Page " counter(page) " of " counter(pages);
+		vertical-align: middle; 
+		font-family: sans-serif;
+		font-weight: bold;
+		font-size: 0.7cm;
+		color: white;
+		text-align: center;
+/* 	padding-left: 2mm;
+		padding-right: 2mm;
+		padding-top: 2mm;
+		padding-bottom: 2mm; */
+		background-color: #53c963;
+		/*background-color: device-cmyk(0.0, 0.0, 0.0, 0.5) ;*/
+		/* margin: -6pt -6pt -6pt 0; */
+		border-bottom: solid green;
+		}
+
+
+
+	@top-right-corner { 
+		content: " "; 
+		background-color: rgba(42, 201, 80, 0.220);
+		/* background-color: #79caff; */
+		border-bottom: solid green; 
+	}
+	
+	/* to manipulate the text, you can also use properties like these ones:
+		text-align: right;
+ 		transform-origin: 100% 0; 
+		transform: rotate(-90deg); 
+	*/
+	
+	@bottom-center {
+			width: 100%;
+			content: "Reporting Powered by Open Source Software";
+			vertical-align: middle; 
+			font-family: sans-serif;
+			font-weight: bold;
+			font-size: 0.7cm;
+			color: green;
+	}
+  
+}
+
+@media print {
+  html, body {
+		font-family: sans-serif;
+		background: none;
+		color: black;
+	}
+	
+	#page {
+		width: 100%;
+		margin: 0; padding: 0;
+		background: none;
+	}
+	#navigation, #footer {
+		display: none;
+	}
+	.entry a:after {
+		content: " [" attr(href) "] ";
+	}
+
+	/* forced page-break */
+	.page-break	{ 
+		display: block; 
+		page-break-before: always; 
+	}
+	/* apply to all divs and tables: */
+	/*
+	#container, #container2, #content {
+		width: 100%; 
+		margin: 0; 
+		float: none;
+	}
+	*/
+		
+	/* inner page specific styles */
+	
+	.section-title {
+		font-size: 0.7cm;
+		padding-top: 0.17cm;
+		margin-top: 0.5cm;
+		margin-bottom: 0.2cm;
+	}
+	
+	.box-container-title {
+		height: 0.6cm;
+		font-size: 0.5cm;
+		padding-bottom: 0.12cm;
+		margin-bottom: 0.2cm;
+	}	
+	
+	/* we have to add padding to an additional nested div 
+	 * as otherwise the whole box width increases */
+	.container-title {
+		padding-top: 0.17cm;
+		padding-left: 0.2cm;
+	}
+		
+	.box-full-width {
+		width: 100%; /* 210 - 15 - 15 mm */
+	}
+	
+	.box-half-width {
+		width: 87mm; /* mm works as apposed to perc */
+		/* border: 1px red solid; */
+	}
+	
+	.box-half-width:nth-child(1){
+		margin: 0mm 1mm 0mm 0mm;
+	}
+	
+	.flex-item {
+		width: 80mm;
+		height: 8mm;
+		line-height: 8mm; /* set to same value as height to vertically centre font */
+		margin-top: 5mm;
+		font-size: 5mm;
+		padding-left: 3mm;
+		border-radius: 2mm;
+	}
+	
+/* 	img{
+		width: 100%;
+	} */
+		
+	/** VERY INDIVIDUAL REPORT SPECIFIC STYLING **/
+	
+
+}
+
+@media screen {
+	html, body {
+		font-family: sans-serif;
+		background: none;
+		color: black;
+	}
+	
+	.section-title {
+		font-size: 1em;
+		text-align: left;
+		padding-top: 0.1em;
+		margin-top: 0.3em;
+		margin-bottom: 0.3em;
+	}
+	
+	.box-container-title {
+		height: 20px;
+		background: rgba(255, 127, 42, 0.75);
+		font-size: 0.9em;
+		margin-bottom: 0.2em;
+		font-size: 0.9em;
+		margin-bottom: 0.2em;
+/* 		border-top-left-radius: .5em;
+		border-bottom-left-radius: .5em; */
+	}	
+	/* we have to add padding to an additional nested div 
+	 * as otherwise the whole box width increases */
+	.container-title {
+		padding-top: 0.1em;
+		padding-left: 0.2em;
+	}
+		
+	.box-full-width {
+		width: 100%; 
+	}
+	
+	.box-half-width {
+		width: 49%;
+	}
+	
+	
+	.box-half-width:nth-child(1){
+		margin: 0% 1% 0% 0%;
+	}
+	
+	#navigation{
+		display: table;
+		height: 25px;
+		width: 100%;
+		background-color: #e6e6e6;
+		color: white;
+		font-weight: bold;
+		border-bottom: 2px #cccccc solid;
+	}
+	
+	.nav-item{
+		display: table-cell;
+		vertical-align: middle;
+		padding-left: 2mm;
+	}
+	
+	.flex-item {
+		width: 48%;
+		height: 20px;
+		line-height: 20px; /* set to same value as height to vertically centre font */
+		margin-top: 10px;
+		font-size: 1em;
+		padding-left: 0.5em;
+		border-radius: .5em;
+	}
+	
+
+}
+
+@media all {
+
+	.section-title {
+		color: black;
+		font-weight: bold;
+		text-align: left;
+		clear: both;
+	}
+	
+	.box-container-title {
+		/* display: table; */
+		width: 100%;
+		background: rgba(255, 127, 42, 0.75);
+		color: white;
+		font-weight: bold;
+		text-align: left;
+	}	
+	
+	.container-title {
+		/* display: table-cell; */
+		width: 100%;
+		height: 100%;
+		vertical-align: middle;
+	}	
+		
+	.box-full-width {
+		width: 100%; 
+		clear: both;
+		float: none;
+		/* display: table-row; */
+		display: block;
+		/* border: 1px #000 solid; */
+	}
+	
+	
+	.box-half-width {
+		float: left;
+		/* border: 1px red solid; */
+	}
+	
+	img{
+		width: 100%;
+	}
+
+	/* http://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+	.flex-container {
+		width: 100%;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+	
+		-webkit-flex-flow: row wrap;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	
+	.flex-item {
+		background: rgba(255, 127, 42, 0.75);
+		color: white;
+		font-weight: bold;
+		text-align: left;
+	}
+
+	/* Bootstrap style table */
+	table {
+		background-color: transparent;
+	}
+	caption {
+		padding-top: 8px;
+		padding-bottom: 8px;
+		color: #777;
+		text-align: left;
+	}
+	th {
+		text-align: left;
+	}
+	.table {
+		width: 100%;
+		max-width: 100%;
+		margin-bottom: 20px;
+	}
+	.table > thead > tr > th,
+	.table > tbody > tr > th,
+	.table > tfoot > tr > th,
+	.table > thead > tr > td,
+	.table > tbody > tr > td,
+	.table > tfoot > tr > td {
+		padding: 8px;
+		line-height: 1.42857143;
+		vertical-align: top;
+		border-top: 1px solid #ddd;
+	}
+	.table > thead > tr > th {
+		vertical-align: bottom;
+		border-bottom: 2px solid #ddd;
+	}
+	.table > caption + thead > tr:first-child > th,
+	.table > colgroup + thead > tr:first-child > th,
+	.table > thead:first-child > tr:first-child > th,
+	.table > caption + thead > tr:first-child > td,
+	.table > colgroup + thead > tr:first-child > td,
+	.table > thead:first-child > tr:first-child > td {
+		border-top: 0;
+	}
+	.table > tbody + tbody {
+		border-top: 2px solid #ddd;
+	}
+	.table .table {
+		background-color: #fff;
+	}
+	.table-condensed > thead > tr > th,
+	.table-condensed > tbody > tr > th,
+	.table-condensed > tfoot > tr > th,
+	.table-condensed > thead > tr > td,
+	.table-condensed > tbody > tr > td,
+	.table-condensed > tfoot > tr > td {
+		padding: 5px;
+	}
+	.table-bordered {
+		border: 1px solid #ddd;
+	}
+	.table-bordered > thead > tr > th,
+	.table-bordered > tbody > tr > th,
+	.table-bordered > tfoot > tr > th,
+	.table-bordered > thead > tr > td,
+	.table-bordered > tbody > tr > td,
+	.table-bordered > tfoot > tr > td {
+		border: 1px solid #ddd;
+	}
+	.table-bordered > thead > tr > th,
+	.table-bordered > thead > tr > td {
+		border-bottom-width: 2px;
+	}
+	.table-striped > tbody > tr:nth-child(odd) {
+		background-color: #f9f9f9;
+	}
+	.table-hover > tbody > tr:hover {
+		background-color: #f5f5f5;
+	}
+	table col[class*="col-"] {
+		position: static;
+		display: table-column;
+		float: none;
+	}
+	table td[class*="col-"],
+	table th[class*="col-"] {
+		position: static;
+		display: table-cell;
+		float: none;
+	}
+	.table > thead > tr > td.active,
+	.table > tbody > tr > td.active,
+	.table > tfoot > tr > td.active,
+	.table > thead > tr > th.active,
+	.table > tbody > tr > th.active,
+	.table > tfoot > tr > th.active,
+	.table > thead > tr.active > td,
+	.table > tbody > tr.active > td,
+	.table > tfoot > tr.active > td,
+	.table > thead > tr.active > th,
+	.table > tbody > tr.active > th,
+	.table > tfoot > tr.active > th {
+		background-color: #f5f5f5;
+	}
+	.table-hover > tbody > tr > td.active:hover,
+	.table-hover > tbody > tr > th.active:hover,
+	.table-hover > tbody > tr.active:hover > td,
+	.table-hover > tbody > tr:hover > .active,
+	.table-hover > tbody > tr.active:hover > th {
+		background-color: #e8e8e8;
+	}
+	.table > thead > tr > td.success,
+	.table > tbody > tr > td.success,
+	.table > tfoot > tr > td.success,
+	.table > thead > tr > th.success,
+	.table > tbody > tr > th.success,
+	.table > tfoot > tr > th.success,
+	.table > thead > tr.success > td,
+	.table > tbody > tr.success > td,
+	.table > tfoot > tr.success > td,
+	.table > thead > tr.success > th,
+	.table > tbody > tr.success > th,
+	.table > tfoot > tr.success > th {
+		background-color: #dff0d8;
+	}
+	.table-hover > tbody > tr > td.success:hover,
+	.table-hover > tbody > tr > th.success:hover,
+	.table-hover > tbody > tr.success:hover > td,
+	.table-hover > tbody > tr:hover > .success,
+	.table-hover > tbody > tr.success:hover > th {
+		background-color: #d0e9c6;
+	}
+	.table > thead > tr > td.info,
+	.table > tbody > tr > td.info,
+	.table > tfoot > tr > td.info,
+	.table > thead > tr > th.info,
+	.table > tbody > tr > th.info,
+	.table > tfoot > tr > th.info,
+	.table > thead > tr.info > td,
+	.table > tbody > tr.info > td,
+	.table > tfoot > tr.info > td,
+	.table > thead > tr.info > th,
+	.table > tbody > tr.info > th,
+	.table > tfoot > tr.info > th {
+		background-color: #d9edf7;
+	}
+	.table-hover > tbody > tr > td.info:hover,
+	.table-hover > tbody > tr > th.info:hover,
+	.table-hover > tbody > tr.info:hover > td,
+	.table-hover > tbody > tr:hover > .info,
+	.table-hover > tbody > tr.info:hover > th {
+		background-color: #c4e3f3;
+	}
+	.table > thead > tr > td.warning,
+	.table > tbody > tr > td.warning,
+	.table > tfoot > tr > td.warning,
+	.table > thead > tr > th.warning,
+	.table > tbody > tr > th.warning,
+	.table > tfoot > tr > th.warning,
+	.table > thead > tr.warning > td,
+	.table > tbody > tr.warning > td,
+	.table > tfoot > tr.warning > td,
+	.table > thead > tr.warning > th,
+	.table > tbody > tr.warning > th,
+	.table > tfoot > tr.warning > th {
+		background-color: #fcf8e3;
+	}
+	.table-hover > tbody > tr > td.warning:hover,
+	.table-hover > tbody > tr > th.warning:hover,
+	.table-hover > tbody > tr.warning:hover > td,
+	.table-hover > tbody > tr:hover > .warning,
+	.table-hover > tbody > tr.warning:hover > th {
+		background-color: #faf2cc;
+	}
+	.table > thead > tr > td.danger,
+	.table > tbody > tr > td.danger,
+	.table > tfoot > tr > td.danger,
+	.table > thead > tr > th.danger,
+	.table > tbody > tr > th.danger,
+	.table > tfoot > tr > th.danger,
+	.table > thead > tr.danger > td,
+	.table > tbody > tr.danger > td,
+	.table > tfoot > tr.danger > td,
+	.table > thead > tr.danger > th,
+	.table > tbody > tr.danger > th,
+	.table > tfoot > tr.danger > th {
+		background-color: #f2dede;
+	}
+	.table-hover > tbody > tr > td.danger:hover,
+	.table-hover > tbody > tr > th.danger:hover,
+	.table-hover > tbody > tr.danger:hover > td,
+	.table-hover > tbody > tr:hover > .danger,
+	.table-hover > tbody > tr.danger:hover > th {
+		background-color: #ebcccc;
+	}
+	.table-responsive {
+		min-height: .01%;
+		overflow-x: auto;
+	}
+}
+
+
+
+
